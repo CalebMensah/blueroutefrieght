@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Login | BlueRoute Security &amp; Shipping Company</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── PAGE HERO ── */
+    .login-hero {
+      min-height: 42vh;
+      background:
+        linear-gradient(rgba(8,10,16,.80), rgba(8,10,16,.80)),
+        url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1600&auto=format&fit=crop')
+        center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 5% 60px;
+    }
+
+    .login-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      color: var(--white);
+      line-height: 1.2;
+      animation: fadeUp .9s .3s ease both;
+    }
+
+    .login-hero p {
+      color: rgba(255,255,255,.78);
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+      max-width: 580px;
+      margin: 16px auto 0;
+      line-height: 1.7;
+      animation: fadeUp .9s .5s ease both;
+    }
+
+    /* ── LOGIN SECTION ── */
+    #login-section {
+      padding: 60px 5% 80px;
+      background: var(--gray-light);
+    }
+
+    .login-card {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.10);
+      padding: 48px 44px 40px;
+    }
+
+    .login-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    /* form groups */
+    .lg-group {
+      margin-bottom: 20px;
+    }
+
+    .lg-group label {
+      display: block;
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 7px;
+    }
+
+    .lg-group .input-wrap {
+      position: relative;
+    }
+
+    .lg-group input {
+      width: 100%;
+      padding: 12px 40px 12px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .lg-group input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(13,31,60,.07);
+    }
+
+    .lg-group input.error {
+      border-color: #ef4444;
+    }
+
+    .toggle-pw {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gray);
+      font-size: .9rem;
+      padding: 0;
+      line-height: 1;
+      transition: color .2s;
+    }
+
+    .toggle-pw:hover { color: var(--navy); }
+
+    /* remember + forgot */
+    .lg-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .lg-meta label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .84rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .lg-meta a {
+      font-size: .84rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .2s;
+    }
+
+    .lg-meta a:hover { color: #a07b22; }
+
+    /* login button */
+    .btn-login-submit {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background .3s, transform .2s;
+      margin-bottom: 22px;
+    }
+
+    .btn-login-submit:hover {
+      background: var(--navy-light);
+      transform: translateY(-1px);
+    }
+
+    /* or continue with divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: #9ca3af;
+      font-size: .82rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    /* Social login buttons */
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      margin-bottom: 12px;
+      transition: opacity .25s, transform .2s;
+      text-decoration: none;
+    }
+
+    .btn-social:hover {
+      opacity: .88;
+      transform: translateY(-1px);
+    }
+
+    .btn-google {
+      background: var(--white);
+      color: #3c4043;
+      border: 1px solid #dadce0;
+    }
+
+    .btn-linkedin {
+      background: #0a66c2;
+      color: var(--white);
+    }
+
+    /* register link */
+    .register-link {
+      text-align: center;
+      font-size: .84rem;
+      color: var(--gray);
+      margin-top: 18px;
+    }
+
+    .register-link a {
+      color: var(--navy);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .register-link a:hover { color: var(--gold); }
+
+    /* error msg */
+    .login-error {
+      display: none;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: .84rem;
+      margin-bottom: 16px;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .login-error.visible { display: flex; }
+
+    /* ── SECURITY BADGES ── */
+    #security-badges {
+      padding: 52px 5%;
+      background: var(--white);
+    }
+
+    .badges-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+
+    .badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .badge-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .badge-item i {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .badge-item h4 {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .badge-item p {
+      font-size: .82rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      .login-card { padding: 32px 22px 28px; }
+      .lg-meta { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">BLUE<br>ROUTE</div>
+    <div class="logo-text">
+      <h1>BLUEROUTE SECURITY &amp; SHIPPING</h1>
+      <p>Secure Global Logistics</p>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="storage.html">Storage</a></li>
+    <li><a href="tracking.html">Tracking</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="login.html" class="btn-login active">CLIENT LOGIN</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<div class="login-hero">
+  <div>
+    <h1>Client Portal Login</h1>
+    <p>Access your secure account to manage shipments, storage, and track your valuable assets worldwide.</p>
+  </div>
+</div>
+
+<!-- ══════════════════ LOGIN CARD ══════════════════ -->
+<section id="login-section">
+  <div class="login-card reveal">
+
+    <h2>Sign In to Your Account</h2>
+
+    <!-- Error banner -->
+    <div class="login-error" id="loginError">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <span>Invalid email or password. Please try again.</span>
+    </div>
+
+    <!-- Email -->
+    <div class="lg-group">
+      <label for="lgEmail">Email Address</label>
+      <div class="input-wrap">
+        <input type="email" id="lgEmail" placeholder="you@example.com" autocomplete="email" />
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="lg-group">
+      <label for="lgPassword">Password</label>
+      <div class="input-wrap">
+        <input type="password" id="lgPassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password" />
+        <button class="toggle-pw" id="togglePw" aria-label="Show/hide password" type="button">
+          <i class="fa-regular fa-eye" id="eyeIcon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Remember + Forgot -->
+    <div class="lg-meta">
+      <label>
+        <input type="checkbox" id="rememberMe" />
+        Remember me
+      </label>
+      <a href="#">Forgot password?</a>
+    </div>
+
+    <!-- Submit -->
+    <button class="btn-login-submit" id="btnLogin">
+      <i class="fa-solid fa-right-to-bracket"></i>&nbsp; LOGIN
+    </button>
+
+    <!-- Social divider -->
+    <div class="divider">or continue with</div>
+
+    <!-- Google -->
+    <button class="btn-social btn-google">
+      <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M47.532 24.552c0-1.636-.132-3.2-.396-4.704H24.48v9.024h13.008c-.576 2.952-2.256 5.472-4.776 7.152v5.88h7.704c4.512-4.152 7.116-10.272 7.116-17.352z" fill="#4285F4"/>
+        <path d="M24.48 48c6.48 0 11.928-2.148 15.9-5.796l-7.704-5.88c-2.148 1.44-4.896 2.292-8.196 2.292-6.3 0-11.64-4.248-13.548-9.972H3.012v6.072C6.972 42.996 15.12 48 24.48 48z" fill="#34A853"/>
+        <path d="M10.932 28.644A14.44 14.44 0 0 1 10.08 24c0-1.62.276-3.192.852-4.644v-6.072H3.012A23.985 23.985 0 0 0 .48 24c0 3.888.936 7.572 2.532 10.716l7.92-6.072z" fill="#FBBC05"/>
+        <path d="M24.48 9.516c3.552 0 6.732 1.224 9.24 3.612l6.888-6.888C36.396 2.388 30.948 0 24.48 0 15.12 0 6.972 5.004 3.012 13.284l7.92 6.072c1.908-5.724 7.248-9.84 13.548-9.84z" fill="#EA4335"/>
+      </svg>
+      Google
+    </button>
+
+    <!-- LinkedIn -->
+    <button class="btn-social btn-linkedin">
+      <i class="fa-brands fa-linkedin-in"></i>
+      LinkedIn
+    </button>
+
+    <!-- Register -->
+    <div class="register-link">
+      Don't have an account? <a href="contact.html">Request access</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ SECURITY BADGES ══════════════════ -->
+<section id="security-badges">
+  <p class="badges-title">Your Security Is Our Priority</p>
+  <div class="badges-grid">
+
+    <div class="badge-item reveal">
+      <i class="fa-solid fa-lock"></i>
+      <div>
+        <h4>256-bit Encryption</h4>
+        <p>All data is secured with bank-level encryption</p>
+      </div>
+    </div>
+
+    <div class="badge-item reveal">
+      <i class="fa-solid fa-shield-halved"></i>
+      <div>
+        <h4>Multi-Factor Auth</h4>
+        <p>Optional additional security layers</p>
+      </div>
+    </div>
+
+    <div class="badge-item reveal">
+      <i class="fa-solid fa-clock-rotate-left"></i>
+      <div>
+        <h4>Activity Monitoring</h4>
+        <p>Real-time tracking of all account access</p>
+      </div>
+    </div>
+
+    <div class="badge-item reveal">
+      <i class="fa-solid fa-certificate"></i>
+      <div>
+        <h4>SSL Certified</h4>
+        <p>Secure connection for all transactions</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>BlueRoute Security &amp; Shipping Company (BlueRoute LLC) offers secure storage and global shipping solutions with the highest security standards across our international locations.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-circle"></i> Home</a></li>
+        <li><a href="services.html"><i class="fa-solid fa-circle"></i> Services</a></li>
+        <li><a href="shipping.html"><i class="fa-solid fa-circle"></i> Shipping</a></li>
+        <li><a href="storage.html"><i class="fa-solid fa-circle"></i> Storage</a></li>
+        <li><a href="tracking.html"><i class="fa-solid fa-circle"></i> Tracking</a></li>
+        <li><a href="contact.html"><i class="fa-solid fa-circle"></i> Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Locations</h4>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> United Kingdom (HQ)</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Dubai, UAE</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Frankfurt, Germany</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Singapore</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-contact">
+        <span><i class="fa-solid fa-location-dot"></i> 13 Exning Rd, Newmarket, CB8 OJD, UK</span>
+        <span><i class="fa-solid fa-phone"></i> +44 7520605728</span>
+        <span><i class="fa-solid fa-envelope"></i> info@blueroute.uk</span>
+        <span><i class="fa-regular fa-clock"></i> Mon-Fri: 8AM &ndash; 6PM (GMT)</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 BlueRoute Security &amp; Shipping Company Limited (BlueRoute LLC). All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════ CHAT WIDGET ══════════════════ -->
+<div class="chat-bubble">
+  <div class="chat-popup" id="chatPopup">
+    <span class="greeting"><i class="fa-solid fa-comment-dots"></i> Hi! How can we help?</span>
+    <button class="chat-quick">I have a question</button>
+    <button class="chat-quick">Tell me more</button>
+    <button class="chat-quick">Can't find your tracking</button>
+  </div>
+  <button class="chat-btn" id="chatBtn" aria-label="Open chat">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+</div>
+
+<script>
+  /* ── Hamburger ── */
+  const navbar    = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', () => navbar.classList.toggle('open'));
+
+  /* ── Chat ── */
+  const chatBtn   = document.getElementById('chatBtn');
+  const chatPopup = document.getElementById('chatPopup');
+  chatBtn.addEventListener('click', () => chatPopup.classList.toggle('open'));
+  setTimeout(() => chatPopup.classList.add('open'), 2000);
+
+  /* ── Show/hide password ── */
+  const togglePw  = document.getElementById('togglePw');
+  const lgPassword = document.getElementById('lgPassword');
+  const eyeIcon   = document.getElementById('eyeIcon');
+
+  togglePw.addEventListener('click', () => {
+    const isHidden = lgPassword.type === 'password';
+    lgPassword.type = isHidden ? 'text' : 'password';
+    eyeIcon.className = isHidden ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye';
+  });
+
+  /* ── Login validation demo ── */
+  document.getElementById('btnLogin').addEventListener('click', () => {
+    const email = document.getElementById('lgEmail').value.trim();
+    const pass  = document.getElementById('lgPassword').value.trim();
+    const err   = document.getElementById('loginError');
+
+    document.getElementById('lgEmail').classList.remove('error');
+    document.getElementById('lgPassword').classList.remove('error');
+    err.classList.remove('visible');
+
+    let valid = true;
+    if (!email) { document.getElementById('lgEmail').classList.add('error');    valid = false; }
+    if (!pass)  { document.getElementById('lgPassword').classList.add('error'); valid = false; }
+
+    if (!valid) return;
+
+    // Demo: show error (in real app this would check credentials)
+    err.classList.add('visible');
+    err.querySelector('span').textContent = 'Invalid email or password. Please try again.';
+  });
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // Stagger badge items
+  document.querySelectorAll('.badges-grid .reveal').forEach((item, i) => {
+    item.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+
+</body>
+</html>

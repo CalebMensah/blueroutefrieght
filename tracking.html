@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dual Tracking | BlueRoute Security &amp; Shipping Company</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="tracking.css" />
+</head>
+<body>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">BLUE<br>ROUTE</div>
+    <div class="logo-text">
+      <h1>BLUEROUTE SECURITY &amp; SHIPPING</h1>
+      <p>Secure Global Logistics</p>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="storage.html">Storage</a></li>
+    <li><a href="tracking.html" class="active">Tracking</a></li>
+    <li><a href="index.html#cta">Contact</a></li>
+  </ul>
+  <a href="#" class="btn-login">CLIENT LOGIN</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════ PAGE HERO ══════════════════ -->
+<div class="page-hero">
+  <div>
+    <h1>Dual Tracking System</h1>
+    <p>Track your shipments or verify vault contents with our secure dual tracking system.</p>
+  </div>
+</div>
+
+<!-- ══════════════════ TRACKER CARD ══════════════════ -->
+<section id="tracker">
+  <div class="tracker-card reveal">
+
+    <!-- Tab strip -->
+    <div class="tracker-tabs">
+      <button class="tracker-tab active" data-ttab="shipment">
+        <i class="fa-solid fa-truck-fast"></i>&nbsp; Shipment Tracking
+      </button>
+      <button class="tracker-tab" data-ttab="vault">
+        <i class="fa-solid fa-vault"></i>&nbsp; Vault Verification
+      </button>
+    </div>
+
+    <!-- ── Shipment Tracking Panel ── -->
+    <div class="tracker-panel active" id="ttab-shipment">
+      <h2>Track Your Shipment</h2>
+
+      <div class="form-group">
+        <label for="trackingNum">Tracking Number</label>
+        <input type="text" id="trackingNum" placeholder="e.g. BLR123456789" />
+      </div>
+
+      <button class="btn-track" id="btnTrackShipment">
+        <i class="fa-solid fa-magnifying-glass"></i>&nbsp; TRACK SHIPMENT
+      </button>
+
+      <!-- Demo result -->
+      <div class="track-result" id="shipmentResult">
+        <div class="result-header">
+          <span class="ref" id="displayRef">BLR123456789</span>
+          <span class="status-badge in-transit">In Transit</span>
+        </div>
+        <div class="result-body">
+          <div class="result-meta">
+            <div class="meta-item">
+              <div class="meta-label">Origin</div>
+              <div class="meta-value">London, UK</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Destination</div>
+              <div class="meta-value">Dubai, UAE</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Service</div>
+              <div class="meta-value">Secure Air Freight</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Est. Delivery</div>
+              <div class="meta-value">12 Mar 2026</div>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item done">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Shipment Collected</div>
+              <div class="tl-time">08 Mar 2026 — 09:15 AM</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Newmarket, UK</div>
+            </div>
+            <div class="tl-item done">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Security Check Passed</div>
+              <div class="tl-time">08 Mar 2026 — 11:30 AM</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Heathrow Hub, UK</div>
+            </div>
+            <div class="tl-item active">
+              <div class="tl-dot"></div>
+              <div class="tl-event">In-Flight — En Route</div>
+              <div class="tl-time">09 Mar 2026 — 02:45 AM</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Airspace over Europe</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Arrived at Destination Hub</div>
+              <div class="tl-time">Pending</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Dubai DIFC, UAE</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Delivered &amp; Signed</div>
+              <div class="tl-time">Pending</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Recipient Address</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Vault Verification Panel ── -->
+    <div class="tracker-panel" id="ttab-vault">
+      <h2>Vault Verification</h2>
+
+      <div class="form-group">
+        <label for="vaultRef">Vault Reference Number</label>
+        <input type="text" id="vaultRef" placeholder="e.g. VLT-UK-00123" />
+      </div>
+
+      <div class="form-group">
+        <label for="vaultFacility">Facility</label>
+        <select id="vaultFacility">
+          <option value="">-- Select facility --</option>
+          <option>United Kingdom (HQ) — Newmarket</option>
+          <option>Dubai, UAE — DIFC</option>
+          <option>Frankfurt, Germany</option>
+          <option>Singapore — Raffles Place</option>
+        </select>
+      </div>
+
+      <button class="btn-track" id="btnTrackVault">
+        <i class="fa-solid fa-shield-halved"></i>&nbsp; VERIFY VAULT CONTENTS
+      </button>
+
+      <!-- Demo result -->
+      <div class="track-result" id="vaultResult">
+        <div class="result-header">
+          <span class="ref" id="displayVaultRef">VLT-UK-00123</span>
+          <span class="status-badge delivered">Verified</span>
+        </div>
+        <div class="result-body">
+          <div class="result-meta">
+            <div class="meta-item">
+              <div class="meta-label">Facility</div>
+              <div class="meta-value">Newmarket, UK</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Vault Grade</div>
+              <div class="meta-value">Grade XII (EX) (CD)</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Last Audit</div>
+              <div class="meta-value">01 Mar 2026</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-label">Next Audit</div>
+              <div class="meta-value">01 Apr 2026</div>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item done">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Contents Deposited</div>
+              <div class="tl-time">15 Jan 2026 — 10:00 AM</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Vault A-12, Newmarket</div>
+            </div>
+            <div class="tl-item done">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Independent Audit Completed</div>
+              <div class="tl-time">01 Mar 2026 — 02:00 PM</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Vault A-12, Newmarket</div>
+            </div>
+            <div class="tl-item active">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Contents Verified — Intact</div>
+              <div class="tl-time">09 Mar 2026 — 09:00 AM</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Vault A-12, Newmarket</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-event">Next Scheduled Audit</div>
+              <div class="tl-time">01 Apr 2026</div>
+              <div class="tl-loc"><i class="fa-solid fa-location-dot"></i> Vault A-12, Newmarket</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ TRACKING FEATURES ══════════════════ -->
+<section id="features">
+  <div class="features-title reveal">
+    <h2>Our Tracking Features</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="features-grid">
+
+    <div class="feature-card reveal">
+      <i class="fa-solid fa-map-location-dot fc-icon"></i>
+      <h3>Real-Time Location</h3>
+      <p>Pinpoint accuracy with our GPS-enabled tracking for high-value shipments.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <i class="fa-solid fa-vault fc-icon"></i>
+      <h3>Secure Vaults</h3>
+      <p>Military-grade vault security with unique access keys for each client.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <i class="fa-solid fa-bell fc-icon"></i>
+      <h3>Custom Alerts</h3>
+      <p>Receive notifications for all shipment and vault access events.</p>
+    </div>
+
+    <div class="feature-card reveal">
+      <i class="fa-solid fa-shield-halved fc-icon"></i>
+      <h3>Full Security</h3>
+      <p>24/7 monitoring and regular audits of all facilities.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>BlueRoute Security &amp; Shipping Company (BlueRoute LLC) offers secure storage and global shipping solutions with the highest security standards across our international locations.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-circle"></i> Home</a></li>
+        <li><a href="services.html"><i class="fa-solid fa-circle"></i> Services</a></li>
+        <li><a href="shipping.html"><i class="fa-solid fa-circle"></i> Shipping</a></li>
+        <li><a href="storage.html"><i class="fa-solid fa-circle"></i> Storage</a></li>
+        <li><a href="tracking.html"><i class="fa-solid fa-circle"></i> Tracking</a></li>
+        <li><a href="index.html#cta"><i class="fa-solid fa-circle"></i> Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Locations</h4>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> United Kingdom (HQ)</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Dubai, UAE</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Frankfurt, Germany</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Singapore</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-contact">
+        <span><i class="fa-solid fa-location-dot"></i> 13 Exning Rd, Newmarket, CB8 OJD, UK</span>
+        <span><i class="fa-solid fa-phone"></i> +44 7520605728</span>
+        <span><i class="fa-solid fa-envelope"></i> info@blueroute.uk</span>
+        <span><i class="fa-regular fa-clock"></i> Mon-Fri: 8AM &ndash; 6PM (GMT)</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 BlueRoute Security &amp; Shipping Company Limited (BlueRoute LLC). All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════ CHAT WIDGET ══════════════════ -->
+<div class="chat-bubble">
+  <div class="chat-popup" id="chatPopup">
+    <span class="greeting"><i class="fa-solid fa-comment-dots"></i> Hi! How can we help?</span>
+    <button class="chat-quick">I have a question</button>
+    <button class="chat-quick">Tell me more</button>
+    <button class="chat-quick">Can't find your tracking</button>
+  </div>
+  <button class="chat-btn" id="chatBtn" aria-label="Open chat">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+</div>
+
+<script>
+  // Hamburger
+  const navbar    = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', () => navbar.classList.toggle('open'));
+
+  // Chat
+  const chatBtn   = document.getElementById('chatBtn');
+  const chatPopup = document.getElementById('chatPopup');
+  chatBtn.addEventListener('click', () => chatPopup.classList.toggle('open'));
+  setTimeout(() => chatPopup.classList.add('open'), 2000);
+
+  // Tracker tabs
+  const ttabBtns   = document.querySelectorAll('.tracker-tab');
+  const ttabPanels = document.querySelectorAll('.tracker-panel');
+
+  ttabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.ttab;
+      ttabBtns.forEach(b => b.classList.remove('active'));
+      ttabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('ttab-' + target).classList.add('active');
+    });
+  });
+
+  // Shipment tracking demo
+  document.getElementById('btnTrackShipment').addEventListener('click', () => {
+    const num = document.getElementById('trackingNum').value.trim();
+    if (!num) {
+      document.getElementById('trackingNum').focus();
+      return;
+    }
+    document.getElementById('displayRef').textContent = num.toUpperCase();
+    const result = document.getElementById('shipmentResult');
+    result.classList.remove('visible');
+    void result.offsetWidth; // reflow to restart animation
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // Vault verification demo
+  document.getElementById('btnTrackVault').addEventListener('click', () => {
+    const ref = document.getElementById('vaultRef').value.trim();
+    if (!ref) {
+      document.getElementById('vaultRef').focus();
+      return;
+    }
+    document.getElementById('displayVaultRef').textContent = ref.toUpperCase();
+    const result = document.getElementById('vaultResult');
+    result.classList.remove('visible');
+    void result.offsetWidth;
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // Stagger feature cards
+  document.querySelectorAll('.features-grid .reveal').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.1}s`;
+  });
+</script>
+
+</body>
+</html>

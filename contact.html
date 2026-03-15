@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | BlueRoute Security &amp; Shipping Company</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Leaflet.js (free open-source map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav id="navbar">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">BLUE<br>ROUTE</div>
+    <div class="logo-text">
+      <h1>BLUEROUTE SECURITY &amp; SHIPPING</h1>
+      <p>Secure Global Logistics</p>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="shipping.html">Shipping</a></li>
+    <li><a href="storage.html">Storage</a></li>
+    <li><a href="tracking.html">Tracking</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="login.php" class="btn-login">CLIENT LOGIN</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════ PAGE HERO ══════════════════ -->
+<div class="page-hero">
+  <div>
+    <h1>Contact Our Global Team</h1>
+    <p>Our international offices are ready to assist with your security and shipping needs. Reach out to our specialists today.</p>
+  </div>
+</div>
+
+<!-- ══════════════════ CONTACT CHANNELS ══════════════════ -->
+<section id="channels">
+  <div class="channels-grid">
+
+    <div class="channel-card reveal">
+      <i class="fa-solid fa-headset ch-icon"></i>
+      <h3>General Inquiries</h3>
+      <div class="ch-row"><strong>Email:</strong> @blueroutefrieght.icu</div>
+      <div class="ch-row"><strong>Phone:</strong> +1 231 456 9035</div>
+      <div class="ch-row"><strong>Hours:</strong> 24/7 Support</div>
+    </div>
+
+    <div class="channel-card reveal">
+      <i class="fa-solid fa-truck-fast ch-icon"></i>
+      <h3>Shipping Services</h3>
+      <div class="ch-row"><strong>Email:</strong> @blueroutefrieght.icu</div>
+      <div class="ch-row"><strong>Phone:</strong> +1 231 456 9035</div>
+      <div class="ch-row"><strong>Hours:</strong> Mon-Fri: 8AM-8PM GMT</div>
+    </div>
+
+    <div class="channel-card reveal">
+      <i class="fa-solid fa-lock ch-icon"></i>
+      <h3>Storage Solutions</h3>
+      <div class="ch-row"><strong>Email:</strong> @blueroutefrieght.icu</div>
+      <div class="ch-row"><strong>Phone:</strong> +1 231 456 9035</div>
+      <div class="ch-row"><strong>Hours:</strong> Mon-Sun: 6AM-10PM GMT</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ FORM + MAP ══════════════════ -->
+<section id="contact-main">
+  <div class="contact-grid">
+
+    <!-- Contact Form -->
+    <div class="contact-form-wrap reveal">
+      <h2>Send Us a Message</h2>
+
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" placeholder="John Smith" />
+      </div>
+
+      <div class="form-group">
+        <label for="emailAddr">Email Address</label>
+        <input type="email" id="emailAddr" placeholder="john@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNum">Phone Number</label>
+        <input type="tel" id="phoneNum" placeholder="+44 7000 000000" />
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <select id="subject">
+          <option value="">Select a subject</option>
+          <option>General Inquiry</option>
+          <option>Shipping Quote</option>
+          <option>Storage Inquiry</option>
+          <option>Tracking Support</option>
+          <option>Security Consulting</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" placeholder="How can we help you?"></textarea>
+      </div>
+
+      <button class="btn-send" id="btnSend">
+        <i class="fa-solid fa-paper-plane"></i>&nbsp; SEND MESSAGE
+      </button>
+
+      <div class="form-success" id="formSuccess">
+        <i class="fa-solid fa-circle-check"></i>
+        Thank you! Your message has been sent. We'll be in touch within 24 hours.
+      </div>
+    </div>
+
+    <!-- Leaflet Map -->
+    <div class="map-wrap reveal">
+      <h2>Our HQ Location</h2>
+      <div id="leaflet-map"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section id="faq">
+  <div class="faq-title reveal">
+    <h2>Frequently Asked Questions</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="faq-list reveal">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What are your business hours?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        Our general support line is available 24/7. Shipping services are available Monday–Friday, 8AM–8PM GMT. Storage solutions support runs Monday–Sunday, 6AM–10PM GMT. Emergency security services are available around the clock.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How quickly can you respond to shipping requests?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        For standard shipments we aim to respond within 2–4 business hours. Urgent or same-day requests are handled within 1 hour during business hours. For pre-arranged secure shipments, we can mobilise within 24 hours globally.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        What security measures do your facilities have?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        All our facilities hold Grade XII (EX) (CD) and EN 1143-1 certifications. We operate 24/7 armed security, biometric access controls, multi-zone CCTV, independent alarm systems, and regular third-party audits at every location.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Do you offer insurance for shipped items?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        Yes. All shipments are covered by our comprehensive all-risk transit insurance up to full market value. We work with Lloyd's of London underwriters. Specialist or high-value items can be covered under bespoke policies — contact our team for details.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How do I access my items in storage?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        Clients can request access or delivery via our secure client portal or by calling our storage team directly. Physical access to private viewing rooms is available by appointment at all four global facilities. Delivery can typically be arranged within 48 hours.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <p>BlueRoute Shipping offers secure storage and global shipping solutions with the highest security standards across our international locations.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-circle"></i> Home</a></li>
+        <li><a href="services.html"><i class="fa-solid fa-circle"></i> Services</a></li>
+        <li><a href="shipping.html"><i class="fa-solid fa-circle"></i> Shipping</a></li>
+        <li><a href="storage.html"><i class="fa-solid fa-circle"></i> Storage</a></li>
+        <li><a href="tracking.html"><i class="fa-solid fa-circle"></i> Tracking</a></li>
+        <li><a href="contact.html"><i class="fa-solid fa-circle"></i> Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Locations</h4>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> United Kingdom (HQ)</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Dubai, UAE</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Frankfurt, Germany</a></li>
+        <li><a href="#"><i class="fa-solid fa-circle"></i> Singapore</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-contact">
+        <span><i class="fa-solid fa-location-dot"></i> 13 Exning Rd, Newmarket, CB8 OJD, UK</span>
+        <span><i class="fa-solid fa-phone"></i> +1 231 456 9035</span>
+        <span><i class="fa-solid fa-envelope"></i> @blueroutefrieght.icu</span>
+        <span><i class="fa-regular fa-clock"></i> Mon-Fri: 8AM &ndash; 6PM (GMT)</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 BlueRoute Shipping. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════ CHAT WIDGET ══════════════════ -->
+<div class="chat-bubble">
+  <div class="chat-popup" id="chatPopup">
+    <span class="greeting"><i class="fa-solid fa-comment-dots"></i> Hi! How can we help?</span>
+    <button class="chat-quick">I have a question</button>
+    <button class="chat-quick">Tell me more</button>
+    <button class="chat-quick">Can't find your tracking</button>
+  </div>
+  <button class="chat-btn" id="chatBtn" aria-label="Open chat">
+    <i class="fa-solid fa-comments"></i>
+  </button>
+</div>
+
+<script>
+  /* ── Hamburger ── */
+  const navbar    = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', () => navbar.classList.toggle('open'));
+
+  /* ── Chat ── */
+  const chatBtn   = document.getElementById('chatBtn');
+  const chatPopup = document.getElementById('chatPopup');
+  chatBtn.addEventListener('click', () => chatPopup.classList.toggle('open'));
+  setTimeout(() => chatPopup.classList.add('open'), 2000);
+
+  /* ── Leaflet Map (OpenStreetMap — free, no API key) ── */
+  const HQ = [52.2405, 0.4087]; // 13 Exning Rd, Newmarket
+
+  const map = L.map('leaflet-map', { scrollWheelZoom: false }).setView(HQ, 15);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  // Custom gold marker icon
+  const goldIcon = L.divIcon({
+    className: '',
+    html: '<div style="width:32px;height:32px;background:#b8942a;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 12px rgba(0,0,0,.35)"></div>',
+    iconSize:   [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor:[0, -36]
+  });
+
+  const marker = L.marker(HQ, { icon: goldIcon }).addTo(map);
+  marker.bindPopup(
+    '<strong style="color:#0d1f3c">BlueRoute Security &amp; Shipping</strong><br>' +
+    '13 Exning Rd, Newmarket<br>CB8 OJD, UK<br>' +
+    '<a href="https://www.openstreetmap.org/?mlat=52.2405&mlon=0.4087#map=16/52.2405/0.4087" ' +
+    'target="_blank" style="color:#b8942a">View on map &rarr;</a>'
+  ).openPopup();
+
+  /* ── Contact Form ── */
+  document.getElementById('btnSend').addEventListener('click', () => {
+    const name    = document.getElementById('fullName').value.trim();
+    const email   = document.getElementById('emailAddr').value.trim();
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      // highlight empty fields
+      [['fullName',name],['emailAddr',email],['subject',subject],['message',message]].forEach(([id,val]) => {
+        const el = document.getElementById(id);
+        el.style.borderColor = val ? '#d1d5db' : '#ef4444';
+      });
+      return;
+    }
+
+    // Reset borders
+    ['fullName','emailAddr','subject','message'].forEach(id => {
+      document.getElementById(id).style.borderColor = '#d1d5db';
+    });
+
+    document.getElementById('formSuccess').classList.add('visible');
+    document.getElementById('formSuccess').scrollIntoView({ behavior:'smooth', block:'nearest' });
+
+    // Clear form
+    ['fullName','emailAddr','phoneNum','message'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('subject').value = '';
+  });
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      // open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // Stagger channel cards
+  document.querySelectorAll('.channels-grid .reveal').forEach((card, i) => {
+    card.style.transitionDelay = `${i * 0.12}s`;
+  });
+</script>
+
+</body>
+</html>
